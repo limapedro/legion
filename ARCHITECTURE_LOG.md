@@ -20,12 +20,11 @@ Format:
 
 ## D001 — Repository name and visibility (2026-11-27, M0)
 
-- Status: locked
-- Decision: the repository is named `legion` and is **private**. The binary,
-  repo and docs all use the name Legion (it is a name, not a codename).
+- Status: superseded by D005
+- Decision: the repository is named `legion` and was initially **private**. The
+  binary, repo and docs all use the name Legion (it is a name, not a codename).
 - Alternatives considered: a codename during development; a public repo.
-- Why: the user specified the name and private-by-default. Making it public
-  requires an explicit decision from the user and has not been requested.
+- Why: the user specified the name and private-by-default for the bootstrap.
 - Evidence: user instructions, section 0 rule 2 and section 1.
 
 ## D002 — License (2026-11-27, M0)
@@ -59,3 +58,24 @@ Format:
 - Alternatives considered: Rust, C++, C#, Go, Python.
 - Why: the study phase exists to choose based on evidence on the target machine.
 - Evidence: `docs/study/` (pending), experiment findings (pending).
+
+## D005 — Repository visibility: public (2026-11-27, M0)
+
+- Status: locked. Supersedes D001.
+- Decision: `limapedro/legion` is a **public** repository.
+- Alternatives considered: keeping it private (the bootstrap default).
+- Why: the user explicitly asked to make it public after reviewing the skeleton.
+- Evidence: user instruction following PR #1; `gh repo view` reports `PUBLIC`.
+
+## D006 — Documentation tone (2026-11-27, M0)
+
+- Status: locked
+- Decision: describe the interface by the idea behind it — an ambient
+  intelligence, a calm head-up display in the terminal, a voice-first future —
+  without direct references to Iron Man or its fictional assistant. Use neutral
+  terms such as "radial progress rings" instead of franchise-specific names.
+- Alternatives considered: keeping the original "JARVIS-style HUD" and
+  "arc-reactor" wording in docs and README.
+- Why: the user asked for a nice README that talks about the concept rather
+  than the reference.
+- Evidence: user instruction after PR #1; README and `docs/UI_NOTES.md` edits.
