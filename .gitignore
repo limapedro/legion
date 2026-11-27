@@ -1,0 +1,48 @@
+# Rust
+/target/
+**/target/
+Cargo.lock.bak
+
+# Python helpers used by experiments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node helpers used by experiments
+node_modules/
+
+# Build output / releases
+/dist/
+/build/
+*.exe
+*.dll
+*.pdb
+*.dmg
+*.app
+
+# Local configuration and credentials — never commit
+config.local.*
+*.env
+.env.*
+local/
+secrets/
+
+# LM Studio / model downloads and caches
+*.gguf
+*.safetensors
+.models/
+
+# Experiment artifacts: keep the notes, not the gigabytes
+experiments/**/frames/
+experiments/**/recordings/
+experiments/**/out/
+experiments/**/bench-results/
+*.log
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
