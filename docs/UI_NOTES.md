@@ -1,4 +1,4 @@
-# UI notes — JARVIS HUD in `cmd`
+# UI notes — an ambient HUD in `cmd`
 
 Research index for the interface track. Each experiment lives in
 `experiments/exp_NNN/` with a `HYPOTHESIS.md` written before and `FINDINGS.md`
