@@ -1,0 +1,27 @@
+# Legion configuration. Copy to legion.toml to override defaults.
+# Typed config only — no sprawling CLI flags.
+
+[provider]
+kind = "openai-compatible"
+base_url = "http://localhost:1234/v1"
+model = "qwen3.5-2b"
+api_key = ""
+# "none" suppresses the Qwen3.5 reasoning stream and guarantees visible answer
+# text. Use "auto" to see reasoning tokens in the HUD.
+reasoning_effort = "none"
+request_timeout_secs = 120
+
+[agent]
+max_tokens = 512
+temperature = 0.0
+max_history_messages = 40
+
+[swarm]
+max_workers = 3
+max_model_requests = 2
+
+[ui]
+theme = "amber-cyan"
+reduced_motion = false
+no_color = false
+no_unicode = false
