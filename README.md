@@ -48,10 +48,13 @@ UI research, with mocked input until voice is real.
 - A Windows command-line harness: runs in classic `cmd.exe` and Windows Terminal.
 - Native rendering with terminal escape sequences. No Electron, no browser, no
   GUI toolkit.
+- An assistant, not just a chat box: typed tools for files, shell, web, notes,
+  tasks, system info and notifications, plus connectors for external systems
+  and a voice-first roadmap. See [docs/ASSISTANT.md](docs/ASSISTANT.md).
 - Model-agnostic behind an interface. Development uses a small local model via
   LM Studio's OpenAI-compatible server.
-- A research project: the UI and swarm behaviour are treated as experiments,
-  with written hypotheses, findings and decisions.
+- A research project: the UI, swarm and tool-calling behaviour are treated as
+  experiments, with written hypotheses, findings and decisions.
 
 ## What it is not (yet)
 
@@ -98,6 +101,7 @@ a PR for each meaningful unit; `main` stays buildable.
 - [Roadmap](docs/ROADMAP.md) — milestones M0–M6 and current status
 - [Docs index](docs/README.md)
 - [Architecture](docs/ARCHITECTURE.md) — written after the study verdict
+- [Assistant vision](docs/ASSISTANT.md) — tools, connectors and tool-call testing
 - [UI notes](docs/UI_NOTES.md) — terminal/HUD research notes and experiment index
 - [Study reports](docs/study/) — harness fundamentals, swarm designs, Windows TUI, verdict
 

@@ -52,12 +52,21 @@ Format:
 
 ## D004 — Language / TUI stack (M0)
 
-- Status: **provisional** — Rust is the default until the study sub-agent
-  reports; this decision is locked only after the user reviews the verdict.
-- Decision: pending.
-- Alternatives considered: Rust, C++, C#, Go, Python.
-- Why: the study phase exists to choose based on evidence on the target machine.
-- Evidence: `docs/study/` (pending), experiment findings (pending).
+- Status: **provisional** — recommendation adopted for implementation, still
+  awaiting the user's explicit review of the verdict before being locked.
+- Decision: build in Rust 1.99+ with a thin custom renderer (crossterm for console
+  I/O only), tokio async tasks in one process for orchestrator/workers, and a
+  typed `ModelProvider` trait with an OpenAI-compatible streaming client.
+- Alternatives considered: C#/.NET 10 (53.9 ms startup, 23.47 MB RSS), Python
+  (63.7 ms, 12.11 MB), C++ and Go (no toolchain installed), ratatui/widget
+  frameworks (too much retained state for a glow-heavy HUD), process-per-agent
+  (heavier, cross-process cancellation and console ownership problems).
+- Why: measured on this machine Rust starts in ~4.9 ms with 4.31 MB idle RSS and
+  a 3-cell diff+encode of 0.0062 ms; crossterm adds <0.2 ms startup and keeps
+  a 112.5 KB binary. One process gives clean hierarchical cancellation and a
+  single owner of the Windows console; tools remain child processes.
+- Evidence: `docs/study/verdict.md`, `experiments/exp_102/FINDINGS.md`,
+  `experiments/exp_103/FINDINGS.md`.
 
 ## D005 — Repository visibility: public (2026-11-27, M0)
 
@@ -115,3 +124,18 @@ Format:
 - Why: Qwen3.5 streams `delta.reasoning_content` and can consume the whole
   `max_tokens` budget before emitting `delta.content`.
 - Evidence: `experiments/exp_001/FINDINGS.md` (new finding), probe results.
+
+## D010 — Product scope: ambient assistant with tools and connectors (2026-11-27, M0)
+
+- Status: locked
+- Decision: Legion's goal is a local, voice-first virtual assistant, not only a
+  coding-agent harness. It needs a broad typed tool catalogue (files, shell,
+  web, notes, tasks, system info, clipboard, notifications), a `Connector`
+  trait for external systems (speech, smart home, calendar, webhooks), and
+  mandatory tool-calling tests with both mock-injected failures and the real
+  LM Studio model.
+- Alternatives considered: coding-agent-only scope; tool calling postponed
+  until after the HUD; trusting the model to validate its own arguments.
+- Why: the user explicitly clarified the goal; a useful assistant is defined
+  by what it can do, and tool calls are where weak models fail.
+- Evidence: user instruction; `docs/ASSISTANT.md`; updated `docs/ROADMAP.md`.

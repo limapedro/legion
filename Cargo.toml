@@ -1,0 +1,28 @@
+[package]
+name = "legion"
+version = "0.1.0"
+edition = "2024"
+description = "A terminal-native agent harness with agent swarms"
+license = "MIT"
+authors = ["Pedro Lima Silva"]
+
+[[bin]]
+name = "legion"
+path = "src/main.rs"
+
+[dependencies]
+tokio = { version = "1.54", features = ["full"] }
+tokio-util = { version = "0.7", features = ["codec"] }
+reqwest = { version = "0.13", default-features = false, features = ["stream", "json"] }
+futures-util = "0.3"
+bytes = "1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+[profile.release]
+opt-level = "z"
+lto = true
+strip = true
+codegen-units = 1
+panic = "abort"
