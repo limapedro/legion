@@ -1,0 +1,87 @@
+{
+  "models": [
+    "qwen3.5-2b",
+    "ternary-bonsai-2-27b",
+    "inkling-2-mini-uncensored",
+    "thinkingmachines/inkling-2-mini",
+    "inkling-2-mini@q8_0",
+    "inkling-2-mini@iq3_xxs",
+    "qwen3.5-35b-a3b",
+    "unsloth/qwen3.8-27b-gguf/mtp-qwen3.8-27b-q4_0.gguf",
+    "unsloth/qwen3.8-27b-gguf/qwen3.8-27b-q4_0.gguf",
+    "text-embedding-nomic-embed-text-v1.5"
+  ],
+  "chats": {
+    "qwen3.5-2b": {
+      "status": 200,
+      "ttft_s": 2.099,
+      "total_s": 2.349,
+      "chunks": 25,
+      "text": "",
+      "finish": "[DONE]"
+    },
+    "inkling-2-mini@q8_0": {
+      "status": 200,
+      "ttft_s": 2.112,
+      "total_s": 2.364,
+      "chunks": 24,
+      "text": "",
+      "finish": "[DONE]"
+    },
+    "qwen3.5-35b-a3b": {
+      "status": 200,
+      "ttft_s": 56.123,
+      "total_s": 58.196,
+      "chunks": 25,
+      "text": "",
+      "finish": "[DONE]"
+    }
+  },
+  "tools": {
+    "qwen3.5-2b": {
+      "total_s": 3.734,
+      "finish_reason": "tool_calls",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "id": "P5GxKNVSc1y0i3tgnwWQBxJj0cLD0nDS",
+          "function": {
+            "name": "read_file",
+            "arguments": "{\"path\":\"C:/temp/report.txt\"}"
+          }
+        }
+      ]
+    },
+    "inkling-2-mini@q8_0": {
+      "total_s": 3.119,
+      "finish_reason": "tool_calls",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "id": "gpdiSKr8FnWbzhIA6ahGnB4oLLsx9qxA",
+          "function": {
+            "name": "read_file",
+            "arguments": "{\"path\":\"C:/temp/report.txt\"}"
+          }
+        }
+      ]
+    },
+    "qwen3.5-35b-a3b": {
+      "total_s": 14.351,
+      "finish_reason": "tool_calls",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "id": "jqhlSO1uPlhk1V4oWHNJIfPgqUCtiL8l",
+          "function": {
+            "name": "read_file",
+            "arguments": "{\"path\":\"C:/temp/report.txt\"}"
+          }
+        }
+      ]
+    }
+  }
+}

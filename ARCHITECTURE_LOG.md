@@ -79,3 +79,39 @@ Format:
 - Why: the user asked for a nice README that talks about the concept rather
   than the reference.
 - Evidence: user instruction after PR #1; README and `docs/UI_NOTES.md` edits.
+
+## D007 — Dev/test model: `qwen3.5-2b` (2026-11-27, M0/M1, provisional)
+
+- Status: provisional — confirmed by experiment, but the provider/stack choice
+  is locked only after the study verdict.
+- Decision: use `qwen3.5-2b` (2B, 1.94 GB) from LM Studio as the development and
+  test model. The requested Qwen3.5 0.6B is not downloaded or served; the 2B
+  model is the closest small Qwen available.
+- Alternatives considered: `qwen3.5-0.6b` (absent), `qwen3.5-35b-a3b` (56 s
+  TTFT — far too slow), `inkling-2-mini@q8_0` (not Qwen), downloading a 0.6B
+  model (out of scope; no downloads).
+- Why: ~2 s TTFT and valid tool calls; small enough for parallel workers.
+- Evidence: `experiments/exp_001/FINDINGS.md` (H1, H4), `/v1/models`, `lms ls`.
+
+## D008 — Mock model with injected failures (2026-11-27, M1/M2, provisional)
+
+- Status: provisional
+- Decision: keep a fake/mock model implementation and inject malformed tool
+  calls, wrong argument types and timeouts in tests; the real 2B model does not
+  naturally emit malformed JSON under the tested prompts.
+- Alternatives considered: relying on the real model to fail usefully; using
+  only the 35B-A3B model as a failure fixture.
+- Why: deterministic failure modes are needed for retry/graceful-failure tests.
+- Evidence: `experiments/exp_001/FINDINGS.md` (H3).
+
+## D009 — Reasoning/answer delta separation in the model interface (2026-11-27, M1, provisional)
+
+- Status: provisional
+- Decision: the model interface distinguishes reasoning deltas from answer
+  deltas and supports `reasoning_effort: "none"` (or an adequate token budget)
+  so the HUD can show a "thinking" state and still guarantee visible answers.
+- Alternatives considered: treating all deltas as answer text (produces an
+  empty UI); relying on `chat_template_kwargs.enable_thinking` (no effect here).
+- Why: Qwen3.5 streams `delta.reasoning_content` and can consume the whole
+  `max_tokens` budget before emitting `delta.content`.
+- Evidence: `experiments/exp_001/FINDINGS.md` (new finding), probe results.

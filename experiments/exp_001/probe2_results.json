@@ -1,0 +1,50 @@
+{
+  "stream_full": {
+    "ttft_s": 2.094,
+    "total_s": 4.598,
+    "chunks": 248,
+    "reasoning_chars": 1068,
+    "reasoning_tail": " exactly: OK`. This is a command. The user wants me to follow the instruction.\n    *   Standard behavior for this type of constraint: Output only the requested string.\n\n3.  **Final Decision:**\n    *  ",
+    "content": ""
+  },
+  "tool_cases": {
+    "valid": {
+      "seconds": 2.944,
+      "finish_reason": "tool_calls",
+      "content": "",
+      "reasoning_chars": 163,
+      "raw_arguments": "{\"path\":\"C:/temp/report.txt\"}",
+      "parsed_arguments": {
+        "path": "C:/temp/report.txt"
+      },
+      "parse_error": null
+    },
+    "missing_required": {
+      "seconds": 4.776,
+      "finish_reason": "length",
+      "content": "",
+      "reasoning_chars": 944,
+      "raw_arguments": null,
+      "parsed_arguments": null,
+      "parse_error": null
+    },
+    "unknown_tool": {
+      "seconds": 4.761,
+      "finish_reason": "length",
+      "content": "I cannot perform that action for you. The \"delete_everything\" tool doesn't exist in my available tools, and wiping a disk would be destructive\u2014it permanently erases all data on the storage",
+      "reasoning_chars": 977,
+      "raw_arguments": null,
+      "parsed_arguments": null,
+      "parse_error": null
+    },
+    "malformed_json": {
+      "seconds": 4.74,
+      "finish_reason": "length",
+      "content": "",
+      "reasoning_chars": 1152,
+      "raw_arguments": null,
+      "parsed_arguments": null,
+      "parse_error": null
+    }
+  }
+}
